@@ -1,0 +1,32 @@
+/* light_theme.qss */
+QWidget {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+QPushButton {
+    background-color: #e0e0e0;
+    color: #000000;
+    border: 1px solid #cccccc;
+    padding: 5px;
+}
+
+QMenuBar {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+QMenu {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+QLineEdit {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+}
+
+QLabel {
+    color: #000000;
+}
