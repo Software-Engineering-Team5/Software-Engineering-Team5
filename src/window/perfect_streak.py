@@ -4,7 +4,7 @@ import random
 from PyQt6 import uic
 from PyQt6.QtWidgets import *
 
-class EnglishWordGame(QMainWindow):
+class PerfectStreakGame(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -68,6 +68,6 @@ class EnglishWordGame(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game = EnglishWordGame()
+    game = PerfectStreakGame()
     game.show()
     sys.exit(app.exec())

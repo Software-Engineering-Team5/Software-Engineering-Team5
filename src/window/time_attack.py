@@ -5,7 +5,7 @@ from PyQt6 import uic
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import QTimer
 
-class EnglishWordGame(QMainWindow):
+class TimeAttackGame(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -88,6 +88,6 @@ class EnglishWordGame(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game = EnglishWordGame()
+    game = TimeAttackGame()
     game.show()
     sys.exit(app.exec())
