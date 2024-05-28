@@ -1,6 +1,7 @@
 import sys
 import json
 import random
+import os
 from PyQt6 import uic
 from PyQt6.QtWidgets import *
 
@@ -8,8 +9,12 @@ class EnglishWordGame(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # EngTest.ui 파일의 경로를 절대 경로로 변환합니다.
+        ui_path = os.path.join(os.path.dirname(__file__), '../ui/MeanTest.ui')
+        ui_path = os.path.abspath(ui_path)
+
         # UI 파일을 로드합니다.
-        uic.loadUi('MeanTest.ui', self)
+        uic.loadUi(ui_path, self)
 
         # 단어 리스트 초기화
         self.words = []
