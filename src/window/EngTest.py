@@ -5,7 +5,7 @@ import os
 from PyQt6 import uic
 from PyQt6.QtWidgets import *
 
-class EnglishWordGame(QMainWindow):
+class EngTest(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -26,7 +26,7 @@ class EnglishWordGame(QMainWindow):
         self.correct_count = 0
         self.total_attempts = 0
         self.max_attempts = 20
-        self.incorrect_answers = []
+        self.results = []
 
         # UI 요소를 가져옵니다.
         self.question_text = self.findChild(QPlainTextEdit, 'plainTextEdit')
@@ -68,14 +68,16 @@ class EnglishWordGame(QMainWindow):
             answer = self.answer_input.text().strip()
             self.total_attempts += 1
             
-            if answer == self.current_word['word']:
+            is_correct = answer == self.current_word['word']
+            if is_correct:
                 self.correct_count += 1
-            else:
-                self.incorrect_answers.append({
-                    "question": self.current_word['meaning'],
-                    "correct_answer": self.current_word['word'],
-                    "your_answer": answer
-                })
+            
+            self.results.append({
+                "question": self.current_word['meaning'],
+                "correct_answer": self.current_word['word'],
+                "your_answer": answer,
+                "result": "O" if is_correct else "X"
+            })
             
             self.next_word()
 
@@ -91,18 +93,20 @@ class EnglishWordGame(QMainWindow):
 
             # Create a table widget
             table = QTableWidget()
-            table.setRowCount(len(self.incorrect_answers))
-            table.setColumnCount(3)
-            table.setHorizontalHeaderLabels(['문제', '정답', '당신의 답'])
+            table.setRowCount(len(self.results))
+            table.setColumnCount(4)
+            table.setHorizontalHeaderLabels(['문제', '정답', '당신의 답', '결과'])
             
-            for row, item in enumerate(self.incorrect_answers):
+            for row, item in enumerate(self.results):
                 question_item = QTableWidgetItem(item['question'])
                 correct_answer_item = QTableWidgetItem(item['correct_answer'])
                 your_answer_item = QTableWidgetItem(item['your_answer'])
+                result_item = QTableWidgetItem(item['result'])
                 
                 table.setItem(row, 0, question_item)
                 table.setItem(row, 1, correct_answer_item)
                 table.setItem(row, 2, your_answer_item)
+                table.setItem(row, 3, result_item)
 
             table.resizeColumnsToContents()
 
@@ -124,14 +128,13 @@ class EnglishWordGame(QMainWindow):
             # Reset the game state
             self.correct_count = 0
             self.total_attempts = 0
-            self.incorrect_answers.clear()
+            self.results.clear()
             self.next_word()
         else:
             QMessageBox.critical(self, "에러", "단어장 파일을 로드해주세요.")
 
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game = EnglishWordGame()
+    game = EngTest()
     game.show()
     sys.exit(app.exec())
