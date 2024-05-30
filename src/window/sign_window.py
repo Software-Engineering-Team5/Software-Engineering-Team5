@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from src.ui.login_ui import Ui_LoginWindow
 from src.ui.signup_ui import Ui_SignUpWindow
 from src.window.main_window import MainWindow
+from src.window.data_managing import DataManageWindow
 from src.module.user_model import *
 
 class LoginWindow(QMainWindow):
@@ -31,9 +32,15 @@ class LoginWindow(QMainWindow):
         user_manager.update_attendance(id)
         user_manager.save_users()
         QMessageBox.information(self, '로그인 성공', '로그인 성공')
-        self.main_window = MainWindow(user_manager.get(id))
-        self.main_window.show()
-        self.close()
+        
+        if user_manager.get(id)['is admin']:
+            self.data_manage_window = DataManageWindow()
+            self.data_manage_window.show()
+            self.close()
+        else:
+            self.main_window = MainWindow(user_manager.get(id))
+            self.main_window.show()
+            self.close()
         
     def signUpFunction(self):
         self.sign_up_window = SignUpWindow()

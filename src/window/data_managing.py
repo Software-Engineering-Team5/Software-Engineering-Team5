@@ -30,18 +30,21 @@ class DataManageWindow(QMainWindow) :
     def button_add(self) :
         filename = 'data/hackers_test/hackers_test_processed.json'
         words = json_to_dict('hackers_test')
-        word = self.lineEdit.text()
-        meaning = self.lineEdit_2.text()
+        word = self.ui.lineEdit.text()
+        meaning = self.ui.lineEdit_2.text()
         add_word(words, word, meaning)
         save_words(words, filename)
+        self.ui.lineEdit.clear()
+        self.ui.lineEdit_2.clear()
         
     def button_remove(self) :
         filename = 'data/hackers_test/hackers_test_processed.json'
         words = json_to_dict('hackers_test')
-        word = self.lineEdit.text()
-        meaning = self.lineEdit_2.text()
+        word = self.ui.lineEdit.text()
         remove_word(words, word)
         save_words(words, filename)
+        self.ui.lineEdit.clear()
+        self.ui.lineEdit_2.clear()
 
 if __name__ == "__main__" :
 
