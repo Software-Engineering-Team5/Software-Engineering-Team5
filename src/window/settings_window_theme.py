@@ -1,14 +1,17 @@
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import QSettings
 
-from ui_settings_window_theme import Ui_ThemeSettingsWindow  # 수정
+from ui.settings_window_theme import Ui_SettingThema  # 수정
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
         # 테마 설정 페이지 UI
-        self.theme_settings_ui = Ui_ThemeSettingsWindow()
+        self.theme_settings_ui = Ui_SettingThema()
         self.theme_settings_ui.setupUi(self)
 
         # QSettings 초기화
