@@ -33,6 +33,15 @@ class UserManager:
         self.users[id] = created.to_dict()
         self.save_users()
         return True
+    
+    def create_admin(self, id, pw):
+        if self.does_exists(id):
+            raise Exception('이미 존재하는 id 입니다. ')
+        created = User(id, pw)
+        created.is_admin = True
+        self.users[id] = created.to_dict()
+        self.save_users()
+        return True
         
     def get(self, id):
         if self.does_exists(id):
@@ -84,6 +93,7 @@ class User:
         self.test_score = 0
         self.time_attack_score = 0
         self.perfect_streak_score = 0
+        self.is_admin = False
         
     @staticmethod
     def hash_password(password):
@@ -95,16 +105,16 @@ class User:
     
     def to_dict(self):
         return {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score": self.test_score, 
-                "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score}
+                "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score, "is admin": self.is_admin}
     
     def serializing(self):
         return {self.id: {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score": self.test_score, 
-                "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score}}
+                "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score, "is admin": self.is_admin}}
     
     def __repr__(self):
-        return f"<User(id='{self.id}', password='{self.password}', last_login='{self.last_login}', attendance='{self.attendance}' ,test_score='{self.test_score}', time_attack_score='{self.time_attack_score}', perfect_streak_score='{self.perfect_streak_score}')>"
+        return f"<User(id='{self.id}', password='{self.password}', last_login='{self.last_login}', attendance='{self.attendance}' ,test_score='{self.test_score}', time_attack_score='{self.time_attack_score}', perfect_streak_score='{self.perfect_streak_score}', is_admin='{self.is_admin}')>"
     
     manager = UserManager()
     
 if __name__ == '__main__':
-    print('123' in {})
+    pass
