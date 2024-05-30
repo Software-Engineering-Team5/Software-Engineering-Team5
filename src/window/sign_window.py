@@ -16,6 +16,7 @@ class LoginWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.loginButton.clicked.connect(self.loginFunction)
         self.ui.signUpButton.clicked.connect(self.signUpFunction)
+        
     def loginFunction(self):
         id = self.ui.id.text()
         pw = self.ui.password.text()
@@ -29,9 +30,10 @@ class LoginWindow(QMainWindow):
             QMessageBox.warning(self, '로그인 실패', '비밀번호가 틀렸습니다. ')
             return
         user_manager.update(id)
+        user_manager.update_attendance(id)
         user_manager.save_users()
         QMessageBox.information(self, '로그인 성공', '로그인 성공')
-        self.main_window = MainWindow()
+        self.main_window = MainWindow(user_manager.get(id))
         self.main_window.show()
         self.close()
         
