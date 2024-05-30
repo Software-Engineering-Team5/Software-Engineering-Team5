@@ -46,7 +46,7 @@ class MainWindow(QMainWindow):
         self.ui.perfectStreakkLabel.setText(self.perfect_streak_score)
     
     def show_setting_window(self):
-        self.thema_window = SettingThemaWindow()
+        self.thema_window = SettingThema()
         self.thema_window.show()
     
     def set_attendance(self):
