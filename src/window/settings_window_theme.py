@@ -8,7 +8,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         # 테마 설정 페이지 UI
-        self.theme_settings_ui = Ui_ThemeSettingWindow()
+        self.theme_settings_ui = Ui_ThemeSettingsWindow()
         self.theme_settings_ui.setupUi(self)
 
         # QSettings 초기화
