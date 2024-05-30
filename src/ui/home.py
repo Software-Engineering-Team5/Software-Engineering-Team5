@@ -209,7 +209,7 @@ class Ui_HomeWindow(object):
         self.label_15.setText(_translate("HomeWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">나의 테스트 기록</span></p></body></html>"))
         self.attendanceInfo.setText(_translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:18pt; font-style:italic; color:#626262;\">현재 </span><span style=\" font-size:18pt; font-weight:700; font-style:italic; color:#397eff;\">n</span><span style=\" font-size:18pt; font-style:italic; color:#626262;\">일 째 출석 중!</span></p></body></html>"))
         self.settingsButton.setText(_translate("HomeWindow", "설정"))
-        self.attendanceInfo_2.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\">오늘의 단어</p></body></html>"))
+        self.attendanceInfo_2.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\">깜짝 단어!</p></body></html>"))
         self.wordLabel.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt; font-weight:700;\">breathtaking</span></p></body></html>"))
         self.meaningLabel.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\">숨이 막히는[멎는 듯한]</p></body></html>"))
 
