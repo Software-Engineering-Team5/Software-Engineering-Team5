@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import QSettings
 
-from ui_settings_window_theme import Ui_ThemeSettingsWindow  # 수정
+from ui.settings_window_theme import Ui_ThemeSettingsWindow  # 수정
 
 class MainWindow(QMainWindow):
     def __init__(self):
