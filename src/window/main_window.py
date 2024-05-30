@@ -4,6 +4,7 @@ sys.path.append('.')
 
 from src.module.data_processing import json_to_dict
 from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtGui import QFont, QFontDatabase
 from src.ui.home import Ui_HomeWindow
 from src.window.test_select_window import TestSelectWindow
 from src.window.game_select_window import GameSelectWindow
@@ -69,6 +70,11 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+
+    font_path = 'src/fonts/AppleSDGothicNeo.ttf' # set font !!
+    QFontDatabase.addApplicationFont(font_path)
+    app.setFont(QFont("AppleSDGothicNeo"))
+
     main_window = MainWindow()
     main_window.show()
     sys.exit(app.exec())
