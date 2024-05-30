@@ -16,6 +16,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -40,7 +43,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>17</pointsize>
+      <pointsize>13</pointsize>
      </font>
     </property>
     <property name="text">
@@ -51,7 +54,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>230</y>
+      <y>240</y>
       <width>400</width>
       <height>81</height>
      </rect>
@@ -76,7 +79,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>16</pointsize>
+      <pointsize>13</pointsize>
      </font>
     </property>
     <property name="placeholderText">
@@ -86,16 +89,18 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>300</x>
       <y>130</y>
-      <width>200</width>
-      <height>80</height>
+      <width>401</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>35</pointsize>
+      <pointsize>25</pointsize>
+      <italic>false</italic>
       <bold>true</bold>
+      <strikeout>false</strikeout>
       <kerning>true</kerning>
      </font>
     </property>
@@ -104,6 +109,25 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>200</y>
+      <width>400</width>
+      <height>3</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>400</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
   </widget>
