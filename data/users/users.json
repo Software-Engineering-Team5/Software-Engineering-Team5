@@ -7,5 +7,14 @@
         "time attack score": 0,
         "perfect streak score": 0,
         "is admin": true
+    },
+    "123": {
+        "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+        "last login": "2024-05-30 23:09:36",
+        "attendance": 1,
+        "test score": 0,
+        "time attack score": 0,
+        "perfect streak score": 0,
+        "is admin": false
     }
 }
