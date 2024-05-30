@@ -1,15 +1,18 @@
-from PySide6.QtWidgets import QApplication, QMainWindow
-from PySide6.QtCore import QSettings
-from PySide6.QtGui import QFont
+import sys
+sys.path.append('.')
 
-from ui_settings_window_font import Ui_FontSettingsWindow  # 수정
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtCore import QSettings
+from PyQt6.QtGui import QFont
+
+from src.ui.settings_window_font import Ui_SettingFont  # 수정
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
         # 폰트 크기 설정 페이지 UI
-        self.font_settings_ui = Ui_FontSettingsWindow()
+        self.font_settings_ui = Ui_SettingFont()
         self.font_settings_ui.setupUi(self)
 
         # QSettings 초기화
