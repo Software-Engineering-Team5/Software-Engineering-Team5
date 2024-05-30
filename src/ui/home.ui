@@ -31,14 +31,14 @@
       <x>30</x>
       <y>30</y>
       <width>341</width>
-      <height>116</height>
+      <height>118</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="title">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:96pt; font-weight:700; color:#000000;&quot;&gt;SE &lt;/span&gt;&lt;span style=&quot; font-size:64pt; font-weight:700; color:#000000;&quot;&gt;voca&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt; font-weight:700; color:#000000;&quot;&gt;SE &lt;/span&gt;&lt;span style=&quot; font-size:48pt; font-weight:700; color:#000000;&quot;&gt;voca&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -64,7 +64,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>18</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -89,7 +89,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>18</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -108,7 +108,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>18</pointsize>
          <bold>true</bold>
         </font>
        </property>
@@ -273,6 +273,11 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-style:italic; color:#626262;&quot;&gt;현재 &lt;/span&gt;&lt;span style=&quot; font-size:18pt; font-weight:700; font-style:italic; color:#397eff;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot; font-size:18pt; font-style:italic; color:#626262;&quot;&gt;일 째 출석 중!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -288,6 +293,12 @@
       <width>71</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
@@ -382,7 +393,7 @@ font-weight: bold;</string>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:36pt; font-weight:700;&quot;&gt;breathtaking&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;breathtaking&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="meaning">
