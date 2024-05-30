@@ -1,8 +1,7 @@
 import json
-import bcrypt
 import hashlib
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta
 
 DB_PATH = 'data/users/users.json'
 TIME_NOW = datetime.now().strftime('%Y-%m-%d %H:%M:%S') # User.last_login의 포맷
@@ -37,12 +36,15 @@ class UserManager:
         
     def get(self, id):
         if self.does_exists(id):
-            return {"id": id, "password": self.users[id]["password"], "last login": self.users[id]["last login"]}
+            return {"id": id, "password": self.users[id]["password"], "last login": self.users[id]["last login"], 
+                    "attendance": self.users[id]["attendance"], "test score": self.users[id]["test score"], 
+                    "time attack score": self.users[id]["time attack score"], "perfect streak score": self.users[id]["perfect streak score"]}
         raise Exception('존재하지 않는 id 입니다. ')
     
     def update(self, id, new_password=None):
         if new_password is not None:
             self.set_password(id, new_password)
+        self.users[id]["last login"] = TIME_NOW
         self.save_users()
         return True
     
@@ -51,16 +53,37 @@ class UserManager:
             self.users[id]["password"] = User.hash_password(new_password)
         raise Exception('존재하지 않는 id 입니다. ')
     
-    def update_last_login(self, id):
-        if self.does_exists(id):
-            self.users[id]["last_login"] = TIME_NOW
-        raise Exception('존재하지 않는 id 입니다. ')
+    def update_attendance(self, id):
+        if datetime.now().date() == (datetime.strptime(self.users[id]["last login"], 
+                                                       '%Y-%m-%d %H:%M:%S').date() + timedelta(days=1)):
+            self.users[id]["attendance"] += 1
+        else:
+            self.users[id]["attendance"] = 1
+            
+    def update_test_score(self, id, score):
+        self.users[id]["test score"] = score
+        self.save_users()
+        return True
     
+    def update_time_attack_score(self, id, score):
+        self.users[id]["time attack score"] = score
+        self.save_users()
+        return True
+    
+    def perfect_streak_score(self, id, score):
+        self.users[id]["perfect streak score"] = score
+        self.save_users()
+        return True
+
 class User:
     def __init__(self, id, password, last_login=None): 
         self.id = id
         self.password = self.hash_password(password)
         self.last_login = "" if last_login is None else last_login
+        self.attendance = 0
+        self.test_score = 0
+        self.time_attack_score = 0
+        self.perfect_streak_score = 0
         
     @staticmethod
     def hash_password(password):
@@ -71,13 +94,15 @@ class User:
         return self.password == hash
     
     def to_dict(self):
-        return {"password": self.password, "last login": self.last_login}
+        return {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score": self.test_score, 
+                "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score}
     
     def serializing(self):
-        return {self.id: {"password": self.password, "last login": self.last_login}}
+        return {self.id: {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score": self.test_score, 
+                "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score}}
     
     def __repr__(self):
-        return f"<User(id='{self.id}', password='{self.password}', last_login='{self.last_login}')>"
+        return f"<User(id='{self.id}', password='{self.password}', last_login='{self.last_login}', attendance='{self.attendance}' ,test_score='{self.test_score}', time_attack_score='{self.time_attack_score}', perfect_streak_score='{self.perfect_streak_score}')>"
     
     manager = UserManager()
     
