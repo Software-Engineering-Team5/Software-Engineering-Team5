@@ -2,7 +2,7 @@ import sys
 sys.path.append('.')
 
 import json
-from src.module.user_model import DB_PATH, User
+from src.module.user_model import DB_PATH, User, UserManager
 from PyQt6.QtWidgets import QMainWindow, QMessageBox, QApplication
 from src.ui.signup_ui import Ui_SignUpWindow
 
@@ -16,16 +16,17 @@ class SignUpWindow(QMainWindow):
     def signupFunction(self):
         id = self.ui.id.text()
         pw = self.ui.password.text()
+        user_manager = UserManager()
         
-        if id == "" or pw == "":
+        if not id or not pw:
             QMessageBox.warning(self, '아이디와 비밀번호를 입력하세요. ', '아이디와 비밀번호를 입력하세요. ')
             return
-        if User.get_user(id, User.load_users()) is not None:
+        if user_manager.does_exists(id):
             QMessageBox.warning(self, '이미 존재하는 아이디입니다', '이미 존재하는 아이디입니다')
             return
-        user = User(id, pw, "")
-        users = user.add()
-        User.save(users)
+        user_manager.create(id, pw)
+        user_manager.save_users()
+        
         QMessageBox.information(self, '회원가입 성공', '회원가입 성공')
         
 if __name__ == "__main__":
