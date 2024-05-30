@@ -1,18 +1,17 @@
 import json
-
+import random
 import sys
+sys.path.append('.')
+
 from PyQt6.QtWidgets import *
 from src.ui.basic_study import Ui_BasicStudy
 from PyQt6 import uic
 import random
-sys.path.append('.')
-
-from src.module.data_processing import *
 
 #화면을 띄우는데 사용되는 Class 선언
-class BasicStudy(QMainWindow, form_class) :
-    def __init__(self) :
-        super().__init__()
+class BasicStudy(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
         self.ui = Ui_BasicStudy()
         self.ui.setupUi(self)
 
@@ -24,28 +23,20 @@ class BasicStudy(QMainWindow, form_class) :
         self.load_word_file()
         random.shuffle(self.words)
         self.current_word = None
-
-        # UI 요소를 가져옵니다.
-        self.pushButton_before = self.findChild(QPushButton, 'pushButton')
-        self.pushButton_after = self.findChild(QPushButton, 'pushButton')
-        self.pushButton_main = self.findChild(QPushButton, 'pushButton')
-        self.label_eng = self.findChild(QLabel, 'label')
-        self.label_kor = self.findChild(QLabel, 'label')
-
-        self.setupUi(self)
         
         if self.words:
             self.i=self.i+1
             self.current_word = self.words[self.i]
-            self.label_eng.setText(f"{self.current_word['word']}")
-            self.label_kor.setText(f"{self.current_word['meaning']}")
+            self.ui.label_eng.setText(f"{self.current_word['word']}")
+            self.ui.label_kor.setText(f"{self.current_word['meaning']}")
 
         else:
             QMessageBox.critical(self, "에러", "단어장 파일을 로드해주세요.")
 
-        self.pushButton_before.clicked.connect(self.button_before)
-        self.pushButton_after.clicked.connect(self.button_after)
-        #self.pushButton_main.clicked.connect(self.button_main)
+        self.ui.pushButton_before.clicked.connect(self.button_before)
+        self.ui.pushButton_after.clicked.connect(self.button_after)
+        self.ui.pushButton_main.clicked.connect(self.button_main)
+        
     def load_word_file(self):
         # 파일 선택 대화 상자를 열어서 JSON 파일을 선택합니다.
         filename, _ = QFileDialog.getOpenFileName(self, "단어장 파일 선택", "", "JSON Files (*.json)")
@@ -60,18 +51,20 @@ class BasicStudy(QMainWindow, form_class) :
         if self.i!=0:
             self.i=self.i-1
             self.current_word = self.words[self.i]
-            self.label_eng.setText(f"{self.current_word['word']}")
-            self.label_kor.setText(f"{self.current_word['meaning']}")
+            self.ui.label_eng.setText(f"{self.current_word['word']}")
+            self.ui.label_kor.setText(f"{self.current_word['meaning']}")
     def button_after(self) :
         if self.words:
             self.i=self.i+1
             self.current_word = self.words[self.i]
-            self.label_eng.setText(f"{self.current_word['word']}")
-            self.label_kor.setText(f"{self.current_word['meaning']}")
+            self.ui.label_eng.setText(f"{self.current_word['word']}")
+            self.ui.label_kor.setText(f"{self.current_word['meaning']}")
 
         else:
             QMessageBox.critical(self, "에러", "단어장 파일을 로드해주세요.")
-    #def button_main(self) :
+            
+    def button_main(self):
+        self.close()
     
 if __name__ == "__main__" :
 
