@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>804</x>
-      <y>298</y>
+      <x>724</x>
+      <y>268</y>
       <width>75</width>
       <height>50</height>
      </rect>
@@ -42,8 +42,8 @@
    <widget class="QPlainTextEdit" name="plainTextEdit">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>218</y>
+      <x>400</x>
+      <y>188</y>
       <width>400</width>
       <height>80</height>
      </rect>
@@ -52,8 +52,8 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>300</y>
+      <x>400</x>
+      <y>270</y>
       <width>321</width>
       <height>45</height>
      </rect>
@@ -62,8 +62,8 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>350</y>
+      <x>400</x>
+      <y>320</y>
       <width>401</width>
       <height>50</height>
      </rect>
@@ -89,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>150</y>
+      <y>130</y>
       <width>241</width>
       <height>271</height>
      </rect>
