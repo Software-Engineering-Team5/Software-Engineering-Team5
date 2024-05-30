@@ -1,15 +1,15 @@
 import sys
 import json
 import random
+from src.ui.perfect_streak import Ui_PerfectStreak
 from PyQt6 import uic
 from PyQt6.QtWidgets import *
 
 class PerfectStreakGame(QMainWindow):
     def __init__(self):
         super().__init__()
-
-        # UI 파일을 로드합니다.
-        uic.loadUi('src/ui/perfect_streak.ui', self)
+        self.ui = Ui_PerfectStreak()
+        self.ui.setupUi(self)
 
         # JSON 파일에서 단어를 불러옵니다.
         self.words = self.load_words_from_json("data/hackers_test/hackers_test_processed.json")
