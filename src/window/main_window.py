@@ -9,7 +9,7 @@ from src.ui.home import Ui_HomeWindow
 from src.window.test_select_window import TestSelectWindow
 from src.window.game_select_window import GameSelectWindow
 from src.window.basic_study import BasicStudy
-from src.window.settings_window_theme import SettingThemaWindow
+from src.window.settings_window_theme import SettingThema
 from src.module.user_model import *
 
 class MainWindow(QMainWindow):
@@ -46,7 +46,7 @@ class MainWindow(QMainWindow):
         self.ui.perfectStreakkLabel.setText(self.perfect_streak_score)
     
     def show_setting_window(self):
-        self.thema_window = SettingThemaWindow()
+        self.thema_window = SettingThema()
         self.thema_window.show()
     
     def set_attendance(self):

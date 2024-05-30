@@ -13,6 +13,7 @@ class Ui_LoginWindow(object):
     def setupUi(self, LoginWindow):
         LoginWindow.setObjectName("LoginWindow")
         LoginWindow.resize(1000, 600)
+        LoginWindow.setStyleSheet("background-color: white;")
         self.centralwidget = QtWidgets.QWidget(parent=LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)

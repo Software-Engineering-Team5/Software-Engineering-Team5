@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>LoginWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
