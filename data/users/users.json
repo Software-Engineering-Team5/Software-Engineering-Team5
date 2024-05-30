@@ -1,9 +1,6 @@
 {
-    "users": [
-        {
-            "id": "123",
-            "password": "$2b$12$eP7wJ79QgvF6v1d1h0FgIeLZsJMlW8GTfPI.8aP4aJashMacPdcyO",
-            "last_login": "2024-05-26 01:57:14"
-        }
-    ]
+    "123": {
+        "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+        "last login": ""
+    }
 }
