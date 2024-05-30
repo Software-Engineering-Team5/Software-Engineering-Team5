@@ -1,14 +1,17 @@
-from PySide6.QtWidgets import QApplication, QMainWindow
-from PySide6.QtCore import QSettings
+import sys
+sys.path.append('.')
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtCore import QSettings
 
-from ui.settings_window_theme import Ui_ThemeSettingsWindow  # 수정
+from src.ui.settings_window_theme import Ui_SettingThema  # 수정
 
-class MainWindow(QMainWindow):
+
+class SettingThema(QMainWindow):
     def __init__(self):
         super().__init__()
 
         # 테마 설정 페이지 UI
-        self.theme_settings_ui = Ui_ThemeSettingsWindow()
+        self.theme_settings_ui = Ui_SettingThema()
         self.theme_settings_ui.setupUi(self)
 
         # QSettings 초기화
@@ -33,13 +36,13 @@ class MainWindow(QMainWindow):
 
     def apply_theme(self):
         if self.theme_settings_ui.radioButton.isChecked():
-            theme_file = "light_theme.qss"
+            theme_file = "src/module/light_theme.qss"
         elif self.theme_settings_ui.radioButton_2.isChecked():
-            theme_file = "dark_theme.qss"
+            theme_file = "src/module/dark_theme.qss"
         elif self.theme_settings_ui.radioButton_3.isChecked():
-            theme_file = "plant_theme.qss"
+            theme_file = "src/module/plant_theme.qss"
         else:
-            theme_file = "light_theme.qss"  # Default theme
+            theme_file = "src/module/light_theme.qss"  # Default theme
 
         self.load_theme(theme_file)
         self.settings.setValue("theme", theme_file)
@@ -59,7 +62,7 @@ if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
 
-    main_window = MainWindow()
+    main_window = SettingThema()
     main_window.show()
 
     sys.exit(app.exec())

@@ -13,6 +13,7 @@ class Ui_SignUpWindow(object):
     def setupUi(self, SignUpWindow):
         SignUpWindow.setObjectName("SignUpWindow")
         SignUpWindow.resize(1000, 600)
+        SignUpWindow.setStyleSheet("background-color: white;")
         self.centralwidget = QtWidgets.QWidget(parent=SignUpWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)
