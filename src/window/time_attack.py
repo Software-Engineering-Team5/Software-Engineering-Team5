@@ -1,6 +1,7 @@
 import sys
 import json
 import random
+from src.ui.time_attack import Ui_TimeAttack
 from PyQt6 import uic
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import QTimer
@@ -8,9 +9,8 @@ from PyQt6.QtCore import QTimer
 class TimeAttackGame(QMainWindow):
     def __init__(self):
         super().__init__()
-
-        # UI 파일을 로드합니다.
-        uic.loadUi('src/ui/time_attack.ui', self)
+        self.ui = Ui_TimeAttack()
+        self.ui.setupUi(self)
 
         # JSON 파일에서 단어를 불러옵니다.
         self.words = self.load_words_from_json("data/hackers_test/hackers_test_processed.json")

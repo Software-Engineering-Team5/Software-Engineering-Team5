@@ -2,27 +2,24 @@ import json
 
 import sys
 from PyQt6.QtWidgets import *
+from src.ui.basic_study import Ui_BasicStudy
 from PyQt6 import uic
 import random
 sys.path.append('.')
 
 from src.module.data_processing import *
 
-#UI파일 연결
-#단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
-form_class = uic.loadUiType("src/ui/basic_study.ui")[0]
-
 #화면을 띄우는데 사용되는 Class 선언
 class BasicStudy(QMainWindow, form_class) :
     def __init__(self) :
         super().__init__()
-
-        # UI 파일을 로드합니다.
-        uic.loadUi('src/ui/basic_study.ui', self)
+        self.ui = Ui_BasicStudy()
+        self.ui.setupUi(self)
 
         # 단어 리스트 초기화
         self.words = []
         self.i=0
+        
         # JSON 파일에서 단어를 불러옵니다.
         self.load_word_file()
         random.shuffle(self.words)
