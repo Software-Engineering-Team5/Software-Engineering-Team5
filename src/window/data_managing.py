@@ -2,7 +2,6 @@ import json
 import sys
 sys.path.append('.')
 from PyQt6.QtWidgets import *
-from PyQt6 import uic
 
 from src.ui.DataManage import Ui_DataManage
 from src.module.data_processing import *

@@ -2,15 +2,18 @@ import sys
 import json
 import random
 from src.ui.perfect_streak import Ui_PerfectStreak
-from PyQt6 import uic
 from PyQt6.QtWidgets import *
+from PyQt6.QtCore import pyqtSignal
+from src.module.user_model import UserManager
 
 class PerfectStreakGame(QMainWindow):
-    def __init__(self):
+    perfectStreakSignal = pyqtSignal(str)
+    
+    def __init__(self, user=None):
         super().__init__()
         self.ui = Ui_PerfectStreak()
         self.ui.setupUi(self)
-
+        self.user = user
         # JSON 파일에서 단어를 불러옵니다.
         self.words = self.load_words_from_json("data/hackers_test/hackers_test_processed.json")
 
@@ -63,8 +66,14 @@ class PerfectStreakGame(QMainWindow):
         msg.setText(f"틀렸습니다! 총 맞춘 개수: {self.correct_count}")
         msg.exec()
 
+        user_manager = UserManager()
+        if int(self.user['perfect streak score']) < self.correct_count:
+            user_manager.update_perfect_streak_score(self.user['id'], self.correct_count)
+            user_manager.save_users()
+            self.perfectStreakSignal.emit(str(self.correct_count))
+        
         self.correct_count = 0
-        self.next_word()
+        self.close()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

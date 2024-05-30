@@ -5,6 +5,7 @@ sys.path.append('.')
 from src.module.data_processing import json_to_dict
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QFont, QFontDatabase
+from PyQt6.QtCore import pyqtSignal
 from src.ui.home import Ui_HomeWindow
 from src.window.test_select_window import TestSelectWindow
 from src.window.game_select_window import GameSelectWindow
@@ -30,20 +31,28 @@ class MainWindow(QMainWindow):
         self.set_perfect_streak_score()
         
     def show_test_window(self):
-        self.test_window = TestSelectWindow()
+        self.test_window = TestSelectWindow(self.user)
+        self.test_window.testSignal.connect(self.update_test_score)
         self.test_window.show()
-
+        
+    def update_test_score(self, result):
+        self.ui.middleLevelScoreLabel.setText(result)
+        
     def show_game_window(self):
-        self.game_window = GameSelectWindow()
+        self.game_window = GameSelectWindow(self.user)
+        self.game_window.timeAttackSignal.connect(self.update_time_attack_score)
+        self.game_window.perfectStreakSignal.connect(self.update_perfect_streak_score)
         self.game_window.show()
+        
+    def update_time_attack_score(self, result):
+        self.ui.timeAttackLabel.setText(result)
+        
+    def update_perfect_streak_score(self, result):
+        self.ui.perfectStreakkLabel.setText(result)
 
     def show_voca_window(self):
         self.voca_window = BasicStudy()
         self.voca_window.show()
-        
-        self.ui.middleLevelScoreLabel.setText(self.middle_level_score)
-        self.ui.timeAttackLabel.setText(self.time_attack)
-        self.ui.perfectStreakkLabel.setText(self.perfect_streak_score)
     
     def show_setting_window(self):
         self.thema_window = SettingThema()

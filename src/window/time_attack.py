@@ -2,16 +2,18 @@ import sys
 import json
 import random
 from src.ui.time_attack import Ui_TimeAttack
-from PyQt6 import uic
 from PyQt6.QtWidgets import *
-from PyQt6.QtCore import QTimer
+from PyQt6.QtCore import QTimer, pyqtSignal
+from src.module.user_model import UserManager
 
 class TimeAttackGame(QMainWindow):
-    def __init__(self):
+    timeAttackSignal = pyqtSignal(str)
+    
+    def __init__(self, user=None):
         super().__init__()
         self.ui = Ui_TimeAttack()
         self.ui.setupUi(self)
-
+        self.user = user
         # JSON 파일에서 단어를 불러옵니다.
         self.words = self.load_words_from_json("data/hackers_test/hackers_test_processed.json")
 
@@ -58,7 +60,6 @@ class TimeAttackGame(QMainWindow):
         self.timer.timeout.connect(self.update_timer)
         self.timer.start(100)  # 매 0.1초마다 타이머를 업데이트
 
-
     def update_timer(self):
         self.time_left -= 1
         progress_percentage = (self.time_left / (self.time_limit * 10)) * 100  # 진행률(백분율) 계산
@@ -82,9 +83,15 @@ class TimeAttackGame(QMainWindow):
         msg.setWindowTitle('결과')
         msg.setText(f"총 맞춘 개수: {self.correct_count}")
         msg.exec()
-
+        
+        user_manager = UserManager()
+        if int(self.user['time attack score']) < self.correct_count:
+            user_manager.update_time_attack_score(self.user['id'], self.correct_count)
+            user_manager.save_users()
+            self.timeAttackSignal.emit(str(self.correct_count))
+    
         self.correct_count = 0
-        self.next_word()
+        self.close()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

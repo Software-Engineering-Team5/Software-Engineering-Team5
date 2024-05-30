@@ -1,17 +1,21 @@
 import sys
+sys.path.append('.')
+
 import json
 import random
-import os
 from src.ui.EngTest import Ui_EnglishTest
-from PyQt6 import uic
 from PyQt6.QtWidgets import *
+from PyQt6.QtCore import pyqtSignal
+from src.module.user_model import *
 
 class EngTest(QMainWindow):
-    def __init__(self):
+    engTestResult = pyqtSignal(str)
+    
+    def __init__(self, user):
         super().__init__()
         self.ui = Ui_EnglishTest()
         self.ui.setupUi(self)
-
+        self.user = user
         # 단어 리스트 초기화
         self.words = []
 
@@ -76,7 +80,7 @@ class EngTest(QMainWindow):
             })
             
             self.next_word()
-
+        
     def show_result(self):
         if self.words:
             dialog = QDialog(self)
@@ -114,8 +118,14 @@ class EngTest(QMainWindow):
 
             layout.addWidget(scroll)
 
+            user_manager = UserManager()
+            if int(self.user['test score']) < self.correct_count:
+                user_manager.update_test_score(self.user['id'], self.correct_count)
+                user_manager.save_users()
+                self.engTestResult.emit(str(self.correct_count))
+            
             close_button = QPushButton("닫기")
-            close_button.clicked.connect(QApplication.instance().quit)
+            close_button.clicked.connect(dialog.close)
             layout.addWidget(close_button)
 
             dialog.setLayout(layout)
@@ -126,11 +136,12 @@ class EngTest(QMainWindow):
             self.total_attempts = 0
             self.results.clear()
             self.next_word()
+            self.close()
         else:
             QMessageBox.critical(self, "에러", "단어장 파일을 로드해주세요.")
-
+            
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game = EngTest()
+    game = EngTest(UserManager().get('123'))
     game.show()
     sys.exit(app.exec())
