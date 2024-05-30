@@ -80,7 +80,7 @@ class UserManager:
         self.save_users()
         return True
     
-    def perfect_streak_score(self, id, score):
+    def update_perfect_streak_score(self, id, score):
         self.users[id]["perfect streak score"] = score
         self.save_users()
         return True
