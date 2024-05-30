@@ -47,7 +47,8 @@ class UserManager:
         if self.does_exists(id):
             return {"id": id, "password": self.users[id]["password"], "last login": self.users[id]["last login"], 
                     "attendance": self.users[id]["attendance"], "test score": self.users[id]["test score"], 
-                    "time attack score": self.users[id]["time attack score"], "perfect streak score": self.users[id]["perfect streak score"]}
+                    "time attack score": self.users[id]["time attack score"], "perfect streak score": self.users[id]["perfect streak score"],
+                    "is admin": self.users[id]["is admin"]}
         raise Exception('존재하지 않는 id 입니다. ')
     
     def update(self, id, new_password=None):
@@ -117,4 +118,6 @@ class User:
     manager = UserManager()
     
 if __name__ == '__main__':
-    pass
+    user_manager = UserManager()
+    user_manager.create_admin('admin', '1234')
+    user_manager.save_users()
