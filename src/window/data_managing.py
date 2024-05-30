@@ -1,24 +1,32 @@
 import json
-
 import sys
+sys.path.append('.')
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
 
-sys.path.append('.')
-
+from src.ui.DataManage import Ui_DataManage
 from src.module.data_processing import *
 
-#UI파일 연결
-#단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
-form_class = uic.loadUiType("src/ui/DataManage.ui")[0]
+def save_words(words, filename):
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(words, file, ensure_ascii=False, indent=4)
 
-#화면을 띄우는데 사용되는 Class 선언
-class WindowClass(QMainWindow, form_class) :
+def add_word(words, word, meaning):
+    words[word] = meaning
+
+def remove_word(words, word):
+    if word in words:
+        del words[word]
+        
+class DataManageWindow(QMainWindow) :
     def __init__(self) :
         super().__init__()
-        self.setupUi(self)
-        self.pushButton.clicked.connect(self.button_add)
-        self.pushButton_2.clicked.connect(self.button_remove)
+        self.ui = Ui_DataManage()
+        self.ui.setupUi(self)
+        
+        self.ui.pushButton.clicked.connect(self.button_add)
+        self.ui.pushButton_2.clicked.connect(self.button_remove)
+        
     def button_add(self) :
         filename = 'data/hackers_test/hackers_test_processed.json'
         words = json_to_dict('hackers_test')
@@ -26,6 +34,7 @@ class WindowClass(QMainWindow, form_class) :
         meaning = self.lineEdit_2.text()
         add_word(words, word, meaning)
         save_words(words, filename)
+        
     def button_remove(self) :
         filename = 'data/hackers_test/hackers_test_processed.json'
         words = json_to_dict('hackers_test')
@@ -40,7 +49,7 @@ if __name__ == "__main__" :
     app = QApplication(sys.argv) 
 
     #WindowClass의 인스턴스 생성
-    myWindow = WindowClass() 
+    myWindow = DataManageWindow() 
 
     #프로그램 화면을 보여주는 코드
     myWindow.show()
