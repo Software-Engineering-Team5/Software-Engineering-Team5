@@ -5,7 +5,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from src.ui.login_ui import Ui_Login
 from src.ui.signup_ui import Ui_SignUp
 from src.window.main import Main
-from src.window.data_managing import DataManage
+from src.window.voca_select_admin import VocaSelectAdmin
 from src.module.user_model import *
 
 class Login(QMainWindow):
@@ -34,7 +34,7 @@ class Login(QMainWindow):
         QMessageBox.information(self, '로그인 성공', '로그인 성공')
         
         if user_manager.get(id)['is admin']:
-            self.data_manage_window = DataManage()
+            self.data_manage_window = VocaSelectAdmin()
             self.data_manage_window.show()
             self.close()
         else:
