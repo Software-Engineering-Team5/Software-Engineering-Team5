@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'GameSelectWindow.ui'
+# Form implementation generated from reading ui file 'GameSelect.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
@@ -9,11 +9,11 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_GameSelectWindow(object):
-    def setupUi(self, GameSelectWindow):
-        GameSelectWindow.setObjectName("GameSelectWindow")
-        GameSelectWindow.resize(1000, 600)
-        self.gridLayoutWidget = QtWidgets.QWidget(parent=GameSelectWindow)
+class Ui_GameSelect(object):
+    def setupUi(self, GameSelect):
+        GameSelect.setObjectName("GameSelect")
+        GameSelect.resize(1000, 600)
+        self.gridLayoutWidget = QtWidgets.QWidget(parent=GameSelect)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(80, 240, 841, 261))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
@@ -40,7 +40,7 @@ class Ui_GameSelectWindow(object):
         self.timeAttackButton.setFont(font)
         self.timeAttackButton.setObjectName("timeAttackButton")
         self.gridLayout.addWidget(self.timeAttackButton, 0, 1, 1, 1)
-        self.label = QtWidgets.QLabel(parent=GameSelectWindow)
+        self.label = QtWidgets.QLabel(parent=GameSelect)
         self.label.setGeometry(QtCore.QRect(305, 166, 391, 71))
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -49,22 +49,22 @@ class Ui_GameSelectWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
 
-        self.retranslateUi(GameSelectWindow)
-        QtCore.QMetaObject.connectSlotsByName(GameSelectWindow)
+        self.retranslateUi(GameSelect)
+        QtCore.QMetaObject.connectSlotsByName(GameSelect)
 
-    def retranslateUi(self, GameSelectWindow):
+    def retranslateUi(self, GameSelect):
         _translate = QtCore.QCoreApplication.translate
-        GameSelectWindow.setWindowTitle(_translate("GameSelectWindow", "Dialog"))
-        self.perfectStreakButton.setText(_translate("GameSelectWindow", "도장 깨기"))
-        self.timeAttackButton.setText(_translate("GameSelectWindow", "타임 어택"))
-        self.label.setText(_translate("GameSelectWindow", "도전하고 싶은 게임을 선택하세요."))
+        GameSelect.setWindowTitle(_translate("GameSelect", "Dialog"))
+        self.perfectStreakButton.setText(_translate("GameSelect", "도장 깨기"))
+        self.timeAttackButton.setText(_translate("GameSelect", "타임 어택"))
+        self.label.setText(_translate("GameSelect", "도전하고 싶은 게임을 선택하세요."))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    GameSelectWindow = QtWidgets.QDialog()
-    ui = Ui_GameSelectWindow()
-    ui.setupUi(GameSelectWindow)
-    GameSelectWindow.show()
+    GameSelect = QtWidgets.QDialog()
+    ui = Ui_GameSelect()
+    ui.setupUi(GameSelect)
+    GameSelect.show()
     sys.exit(app.exec())

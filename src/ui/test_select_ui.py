@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'TestSelectWindow.ui'
+# Form implementation generated from reading ui file 'TestSelect.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
@@ -9,11 +9,11 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_TestSelectWindow(object):
-    def setupUi(self, TestSelectWindow):
-        TestSelectWindow.setObjectName("TestSelectWindow")
-        TestSelectWindow.resize(1000, 600)
-        self.horizontalLayoutWidget = QtWidgets.QWidget(parent=TestSelectWindow)
+class Ui_TestSelect(object):
+    def setupUi(self, TestSelect):
+        TestSelect.setObjectName("TestSelect")
+        TestSelect.resize(1000, 600)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(parent=TestSelect)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(80, 240, 841, 261))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
@@ -35,7 +35,7 @@ class Ui_TestSelectWindow(object):
         self.engButton.setFont(font)
         self.engButton.setObjectName("engButton")
         self.horizontalLayout.addWidget(self.engButton)
-        self.label = QtWidgets.QLabel(parent=TestSelectWindow)
+        self.label = QtWidgets.QLabel(parent=TestSelect)
         self.label.setGeometry(QtCore.QRect(304, 167, 391, 71))
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -44,22 +44,22 @@ class Ui_TestSelectWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
 
-        self.retranslateUi(TestSelectWindow)
-        QtCore.QMetaObject.connectSlotsByName(TestSelectWindow)
+        self.retranslateUi(TestSelect)
+        QtCore.QMetaObject.connectSlotsByName(TestSelect)
 
-    def retranslateUi(self, TestSelectWindow):
+    def retranslateUi(self, TestSelect):
         _translate = QtCore.QCoreApplication.translate
-        TestSelectWindow.setWindowTitle(_translate("TestSelectWindow", "Dialog"))
-        self.meanButton.setText(_translate("TestSelectWindow", "뜻 맞추기"))
-        self.engButton.setText(_translate("TestSelectWindow", "단어 맞추기"))
-        self.label.setText(_translate("TestSelectWindow", "테스트할 항목을 선택하세요."))
+        TestSelect.setWindowTitle(_translate("TestSelect", "Dialog"))
+        self.meanButton.setText(_translate("TestSelect", "뜻 맞추기"))
+        self.engButton.setText(_translate("TestSelect", "단어 맞추기"))
+        self.label.setText(_translate("TestSelect", "테스트할 항목을 선택하세요."))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    TestSelectWindow = QtWidgets.QDialog()
-    ui = Ui_TestSelectWindow()
-    ui.setupUi(TestSelectWindow)
-    TestSelectWindow.show()
+    TestSelect = QtWidgets.QDialog()
+    ui = Ui_TestSelect()
+    ui.setupUi(TestSelect)
+    TestSelect.show()
     sys.exit(app.exec())

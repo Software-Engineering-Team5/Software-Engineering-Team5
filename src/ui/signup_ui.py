@@ -9,12 +9,12 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_SignUpWindow(object):
-    def setupUi(self, SignUpWindow):
-        SignUpWindow.setObjectName("SignUpWindow")
-        SignUpWindow.resize(1000, 600)
-        SignUpWindow.setStyleSheet("background-color: white;")
-        self.centralwidget = QtWidgets.QWidget(parent=SignUpWindow)
+class Ui_SignUp(object):
+    def setupUi(self, SignUp):
+        SignUp.setObjectName("SignUp")
+        SignUp.resize(1000, 600)
+        SignUp.setStyleSheet("background-color: white;")
+        self.centralwidget = QtWidgets.QWidget(parent=SignUp)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(0, 140, 1001, 71))
@@ -106,32 +106,32 @@ class Ui_SignUpWindow(object):
         self.id.setGeometry(QtCore.QRect(380, 220, 241, 31))
         self.id.setEchoMode(QtWidgets.QLineEdit.EchoMode.Normal)
         self.id.setObjectName("id")
-        SignUpWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(parent=SignUpWindow)
+        SignUp.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(parent=SignUp)
         self.statusbar.setObjectName("statusbar")
-        SignUpWindow.setStatusBar(self.statusbar)
+        SignUp.setStatusBar(self.statusbar)
 
-        self.retranslateUi(SignUpWindow)
-        QtCore.QMetaObject.connectSlotsByName(SignUpWindow)
+        self.retranslateUi(SignUp)
+        QtCore.QMetaObject.connectSlotsByName(SignUp)
 
-    def retranslateUi(self, SignUpWindow):
+    def retranslateUi(self, SignUp):
         _translate = QtCore.QCoreApplication.translate
-        SignUpWindow.setWindowTitle(_translate("SignUpWindow", "LoginWindow"))
-        self.label.setText(_translate("SignUpWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">회원가입</span></p></body></html>"))
-        self.label_2.setText(_translate("SignUpWindow", "<html><head/><body><p align=\"center\">ID</p></body></html>"))
-        self.signupButton.setText(_translate("SignUpWindow", "회원가입"))
-        self.label_3.setText(_translate("SignUpWindow", "<html><head/><body><p align=\"center\">PW</p></body></html>"))
-        self.label_4.setText(_translate("SignUpWindow", "<html><head/><body><p align=\"center\"><span style=\" color:#777777;\">계정이 이미 있으신가요?</span></p></body></html>"))
-        self.loginButton.setText(_translate("SignUpWindow", "로그인"))
-        self.password.setPlaceholderText(_translate("SignUpWindow", "비밀번호를 입력하세요."))
-        self.id.setPlaceholderText(_translate("SignUpWindow", "아이디를 입력하세요."))
+        SignUp.setWindowTitle(_translate("SignUp", "LoginWindow"))
+        self.label.setText(_translate("SignUp", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">회원가입</span></p></body></html>"))
+        self.label_2.setText(_translate("SignUp", "<html><head/><body><p align=\"center\">ID</p></body></html>"))
+        self.signupButton.setText(_translate("SignUp", "회원가입"))
+        self.label_3.setText(_translate("SignUp", "<html><head/><body><p align=\"center\">PW</p></body></html>"))
+        self.label_4.setText(_translate("SignUp", "<html><head/><body><p align=\"center\"><span style=\" color:#777777;\">계정이 이미 있으신가요?</span></p></body></html>"))
+        self.loginButton.setText(_translate("SignUp", "로그인"))
+        self.password.setPlaceholderText(_translate("SignUp", "비밀번호를 입력하세요."))
+        self.id.setPlaceholderText(_translate("SignUp", "아이디를 입력하세요."))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    SignUpWindow = QtWidgets.QMainWindow()
-    ui = Ui_SignUpWindow()
-    ui.setupUi(SignUpWindow)
-    SignUpWindow.show()
+    SignUp = QtWidgets.QMainWindow()
+    ui = Ui_SignUp()
+    ui.setupUi(SignUp)
+    SignUp.show()
     sys.exit(app.exec())
