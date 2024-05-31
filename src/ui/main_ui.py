@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'home.ui'
+# Form implementation generated from reading ui file 'Main.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
@@ -9,12 +9,12 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_HomeWindow(object):
-    def setupUi(self, HomeWindow):
-        HomeWindow.setObjectName("HomeWindow")
-        HomeWindow.resize(1000, 600)
-        HomeWindow.setStyleSheet("background-color: white;")
-        self.centralwidget = QtWidgets.QWidget(parent=HomeWindow)
+class Ui_Main(object):
+    def setupUi(self, Main):
+        Main.setObjectName("Main")
+        Main.resize(1000, 600)
+        Main.setStyleSheet("background-color: white;")
+        self.centralwidget = QtWidgets.QWidget(parent=Main)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(parent=self.centralwidget)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(140, 160, 4, 4))
@@ -185,40 +185,40 @@ class Ui_HomeWindow(object):
         self.line_2.setFrameShape(QtWidgets.QFrame.Shape.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_2.setObjectName("line_2")
-        HomeWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(parent=HomeWindow)
+        Main.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(parent=Main)
         self.statusbar.setObjectName("statusbar")
-        HomeWindow.setStatusBar(self.statusbar)
+        Main.setStatusBar(self.statusbar)
 
-        self.retranslateUi(HomeWindow)
-        QtCore.QMetaObject.connectSlotsByName(HomeWindow)
+        self.retranslateUi(Main)
+        QtCore.QMetaObject.connectSlotsByName(Main)
 
-    def retranslateUi(self, HomeWindow):
+    def retranslateUi(self, Main):
         _translate = QtCore.QCoreApplication.translate
-        HomeWindow.setWindowTitle(_translate("HomeWindow", "LoginWindow"))
-        self.title.setText(_translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:72pt; font-weight:700; color:#000000;\">SE </span><span style=\" font-size:48pt; font-weight:700; color:#000000;\">voca</span></p></body></html>"))
-        self.gameButton.setText(_translate("HomeWindow", "게임"))
-        self.testButton.setText(_translate("HomeWindow", "테스트"))
-        self.vocaButton.setText(_translate("HomeWindow", "단어장"))
-        self.label_2.setText(_translate("HomeWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">나의 게임 기록</span></p></body></html>"))
-        self.label_7.setText(_translate("HomeWindow", "도장 깨기:"))
-        self.label_3.setText(_translate("HomeWindow", "타임 어택:"))
-        self.label_12.setText(_translate("HomeWindow", "중급:"))
-        self.label_16.setText(_translate("HomeWindow", "하급:"))
-        self.label_5.setText(_translate("HomeWindow", "상급:"))
-        self.label_15.setText(_translate("HomeWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">나의 테스트 기록</span></p></body></html>"))
-        self.attendanceInfo.setText(_translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:18pt; font-style:italic; color:#626262;\">현재 </span><span style=\" font-size:18pt; font-weight:700; font-style:italic; color:#397eff;\">n</span><span style=\" font-size:18pt; font-style:italic; color:#626262;\">일 째 출석 중!</span></p></body></html>"))
-        self.settingsButton.setText(_translate("HomeWindow", "설정"))
-        self.attendanceInfo_2.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\">깜짝 단어!</p></body></html>"))
-        self.wordLabel.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt; font-weight:700;\">breathtaking</span></p></body></html>"))
-        self.meaningLabel.setText(_translate("HomeWindow", "<html><head/><body><p align=\"right\">숨이 막히는[멎는 듯한]</p></body></html>"))
+        Main.setWindowTitle(_translate("Main", "Main"))
+        self.title.setText(_translate("Main", "<html><head/><body><p><span style=\" font-size:72pt; font-weight:700; color:#000000;\">SE </span><span style=\" font-size:48pt; font-weight:700; color:#000000;\">voca</span></p></body></html>"))
+        self.gameButton.setText(_translate("Main", "게임"))
+        self.testButton.setText(_translate("Main", "테스트"))
+        self.vocaButton.setText(_translate("Main", "단어장"))
+        self.label_2.setText(_translate("Main", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">나의 게임 기록</span></p></body></html>"))
+        self.label_7.setText(_translate("Main", "도장 깨기:"))
+        self.label_3.setText(_translate("Main", "타임 어택:"))
+        self.label_12.setText(_translate("Main", "중급:"))
+        self.label_16.setText(_translate("Main", "하급:"))
+        self.label_5.setText(_translate("Main", "상급:"))
+        self.label_15.setText(_translate("Main", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">나의 테스트 기록</span></p></body></html>"))
+        self.attendanceInfo.setText(_translate("Main", "<html><head/><body><p><span style=\" font-size:18pt; font-style:italic; color:#626262;\">현재 </span><span style=\" font-size:18pt; font-weight:700; font-style:italic; color:#397eff;\">n</span><span style=\" font-size:18pt; font-style:italic; color:#626262;\">일 째 출석 중!</span></p></body></html>"))
+        self.settingsButton.setText(_translate("Main", "설정"))
+        self.attendanceInfo_2.setText(_translate("Main", "<html><head/><body><p align=\"right\">깜짝 단어!</p></body></html>"))
+        self.wordLabel.setText(_translate("Main", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt; font-weight:700;\">breathtaking</span></p></body></html>"))
+        self.meaningLabel.setText(_translate("Main", "<html><head/><body><p align=\"right\">숨이 막히는[멎는 듯한]</p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    HomeWindow = QtWidgets.QMainWindow()
-    ui = Ui_HomeWindow()
-    ui.setupUi(HomeWindow)
-    HomeWindow.show()
+    Main = QtWidgets.QMainWindow()
+    ui = Ui_Main()
+    ui.setupUi(Main)
+    Main.show()
     sys.exit(app.exec())

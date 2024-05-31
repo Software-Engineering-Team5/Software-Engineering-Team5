@@ -9,12 +9,12 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1000, 600)
-        MainWindow.setStyleSheet("background-color: white;")
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+class Ui_MeanTest(object):
+    def setupUi(self, MeanTest):
+        MeanTest.setObjectName("MeanTest")
+        MeanTest.resize(1000, 600)
+        MeanTest.setStyleSheet("background-color: white;")
+        self.centralwidget = QtWidgets.QWidget(parent=MeanTest)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(624, 350, 75, 50))
@@ -43,27 +43,27 @@ class Ui_MainWindow(object):
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
+        MeanTest.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(parent=MeanTest)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        MeanTest.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(MeanTest)
+        QtCore.QMetaObject.connectSlotsByName(MeanTest)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, MeanTest):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "제출"))
-        self.lineEdit.setPlaceholderText(_translate("MainWindow", "답 입력"))
-        self.label.setText(_translate("MainWindow", "뜻 테스트"))
+        MeanTest.setWindowTitle(_translate("MeanTest", "MeanTest"))
+        self.pushButton.setText(_translate("MeanTest", "제출"))
+        self.lineEdit.setPlaceholderText(_translate("MeanTest", "답 입력"))
+        self.label.setText(_translate("MeanTest", "뜻 테스트"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    MeanTest = QtWidgets.QMeanTest()
+    ui = Ui_MeanTest()
+    ui.setupUi(MeanTest)
+    MeanTest.show()
     sys.exit(app.exec())

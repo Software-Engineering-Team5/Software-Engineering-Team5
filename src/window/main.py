@@ -5,18 +5,17 @@ sys.path.append('.')
 from src.module.data_processing import json_to_dict
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QFont, QFontDatabase
-from PyQt6.QtCore import pyqtSignal
-from src.ui.home import Ui_HomeWindow
-from src.window.test_select_window import TestSelectWindow
-from src.window.game_select_window import GameSelectWindow
+from src.ui.main_ui import Ui_Main
+from src.window.test_select import TestSelect
+from src.window.game_select import GameSelect
 from src.window.basic_study import BasicStudy
 from src.window.settings_window_theme import SettingThema
 from src.module.user_model import *
 
-class MainWindow(QMainWindow):
+class Main(QMainWindow):
     def __init__(self, user=None, parent=None):
         super().__init__(parent)
-        self.ui = Ui_HomeWindow()
+        self.ui = Ui_Main()
         self.ui.setupUi(self)
         self.user = user
         self.ui.testButton.clicked.connect(self.show_test_window)
@@ -31,7 +30,7 @@ class MainWindow(QMainWindow):
         self.set_perfect_streak_score()
         
     def show_test_window(self):
-        self.test_window = TestSelectWindow(self.user)
+        self.test_window = TestSelect(self.user)
         self.test_window.testSignal.connect(self.update_test_score)
         self.test_window.show()
         
@@ -39,7 +38,7 @@ class MainWindow(QMainWindow):
         self.ui.middleLevelScoreLabel.setText(result)
         
     def show_game_window(self):
-        self.game_window = GameSelectWindow(self.user)
+        self.game_window = GameSelect(self.user)
         self.game_window.timeAttackSignal.connect(self.update_time_attack_score)
         self.game_window.perfectStreakSignal.connect(self.update_perfect_streak_score)
         self.game_window.show()
@@ -84,6 +83,6 @@ if __name__ == '__main__':
     QFontDatabase.addApplicationFont(font_path)
     app.setFont(QFont("AppleSDGothicNeo"))
 
-    main_window = MainWindow()
+    main_window = Main()
     main_window.show()
     sys.exit(app.exec())

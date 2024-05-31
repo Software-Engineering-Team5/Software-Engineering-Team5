@@ -3,7 +3,7 @@ sys.path.append('.')
 
 import json
 import random
-from src.ui.EngTest import Ui_EnglishTest
+from src.ui.eng_test_ui import Ui_EnglishTest
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import pyqtSignal
 from src.module.user_model import *
