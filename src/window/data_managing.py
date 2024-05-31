@@ -18,30 +18,28 @@ def remove_word(words, word):
         del words[word]
         
 class DataManage(QMainWindow) :
-    def __init__(self) :
+    def __init__(self, filename) :
         super().__init__()
         self.ui = Ui_DataManage()
         self.ui.setupUi(self)
-        
+        self.filename = filename
         self.ui.pushButton.clicked.connect(self.button_add)
         self.ui.pushButton_2.clicked.connect(self.button_remove)
         
     def button_add(self) :
-        filename = 'data/hackers_test/hackers_test_processed.json'
         words = json_to_dict('hackers_test')
         word = self.ui.lineEdit.text()
         meaning = self.ui.lineEdit_2.text()
         add_word(words, word, meaning)
-        save_words(words, filename)
+        save_words(words, self.filename)
         self.ui.lineEdit.clear()
         self.ui.lineEdit_2.clear()
         
     def button_remove(self) :
-        filename = 'data/hackers_test/hackers_test_processed.json'
         words = json_to_dict('hackers_test')
         word = self.ui.lineEdit.text()
         remove_word(words, word)
-        save_words(words, filename)
+        save_words(words, self.filename)
         self.ui.lineEdit.clear()
         self.ui.lineEdit_2.clear()
 
