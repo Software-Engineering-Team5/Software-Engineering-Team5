@@ -3,16 +3,16 @@ sys.path.append('.')
 
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtCore import pyqtSignal
-from src.ui.TestSelectWindow import Ui_TestSelectWindow
-from src.window.MeanTest import MeanTest
-from src.window.EngTest import EngTest
+from src.ui.test_select_ui import Ui_TestSelect
+from src.window.mean_test import MeanTest
+from src.window.eng_test import EngTest
 
-class TestSelectWindow(QMainWindow):
+class TestSelect(QMainWindow):
     testSignal = pyqtSignal(str)
     
     def __init__(self, user=None, parent=None):
         super().__init__(parent)
-        self.ui = Ui_TestSelectWindow()
+        self.ui = Ui_TestSelect()
         self.ui.setupUi(self)
         self.user = user
         self.ui.meanButton.clicked.connect(self.mean_test)
@@ -35,7 +35,7 @@ class TestSelectWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    widget = TestSelectWindow()
+    widget = TestSelect()
     widget.show()
     sys.exit(app.exec())
 

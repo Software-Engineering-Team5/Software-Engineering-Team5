@@ -48,7 +48,7 @@ class SettingThema(QMainWindow):
         self.settings.setValue("theme", theme_file)
 
     def load_last_theme(self):
-        theme_file = self.settings.value("theme", "light_theme.qss")
+        theme_file = self.settings.value("theme", "/src/module/light_theme.qss")
         self.load_theme(theme_file)
 
     def load_theme(self, theme_file):
@@ -59,7 +59,6 @@ class SettingThema(QMainWindow):
             print(f"Theme file {theme_file} not found.")
 
 if __name__ == "__main__":
-    import sys
     app = QApplication(sys.argv)
 
     main_window = SettingThema()

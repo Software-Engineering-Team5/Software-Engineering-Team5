@@ -3,7 +3,7 @@ import sys
 sys.path.append('.')
 from PyQt6.QtWidgets import *
 
-from src.ui.DataManage import Ui_DataManage
+from src.ui.data_manage_ui import Ui_DataManage
 from src.module.data_processing import *
 
 def save_words(words, filename):
@@ -17,7 +17,7 @@ def remove_word(words, word):
     if word in words:
         del words[word]
         
-class DataManageWindow(QMainWindow) :
+class DataManage(QMainWindow) :
     def __init__(self) :
         super().__init__()
         self.ui = Ui_DataManage()
@@ -51,7 +51,7 @@ if __name__ == "__main__" :
     app = QApplication(sys.argv) 
 
     #WindowClass의 인스턴스 생성
-    myWindow = DataManageWindow() 
+    myWindow = DataManage() 
 
     #프로그램 화면을 보여주는 코드
     myWindow.show()

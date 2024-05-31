@@ -1,12 +1,13 @@
 import sys
+sys.path.append('.')
 import json
 import random
-from src.ui.time_attack import Ui_TimeAttack
+from src.ui.time_attack_ui import Ui_TimeAttack
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import QTimer, pyqtSignal
 from src.module.user_model import UserManager
 
-class TimeAttackGame(QMainWindow):
+class TimeAttack(QMainWindow):
     timeAttackSignal = pyqtSignal(str)
     
     def __init__(self, user=None):
@@ -95,6 +96,6 @@ class TimeAttackGame(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game = TimeAttackGame()
+    game = TimeAttack()
     game.show()
     sys.exit(app.exec())

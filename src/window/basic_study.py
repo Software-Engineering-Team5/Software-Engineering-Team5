@@ -4,7 +4,7 @@ import sys
 sys.path.append('.')
 
 from PyQt6.QtWidgets import *
-from src.ui.basic_study import Ui_BasicStudy
+from src.ui.basic_study_ui import Ui_BasicStudy
 import random
 
 #화면을 띄우는데 사용되는 Class 선언

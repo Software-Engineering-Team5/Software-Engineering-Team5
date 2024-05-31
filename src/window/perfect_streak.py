@@ -1,12 +1,13 @@
 import sys
+sys.path.append('.')
 import json
 import random
-from src.ui.perfect_streak import Ui_PerfectStreak
+from src.ui.perfect_streak__ui import Ui_PerfectStreak
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import pyqtSignal
 from src.module.user_model import UserManager
 
-class PerfectStreakGame(QMainWindow):
+class PerfectStreak(QMainWindow):
     perfectStreakSignal = pyqtSignal(str)
     
     def __init__(self, user=None):
@@ -77,6 +78,6 @@ class PerfectStreakGame(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    game = PerfectStreakGame()
+    game = PerfectStreak()
     game.show()
     sys.exit(app.exec())

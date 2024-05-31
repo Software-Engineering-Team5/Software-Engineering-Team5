@@ -1,7 +1,8 @@
 import sys
+sys.path.append('.')
 import json
 import random
-from src.ui.MeanTest import Ui_MainWindow
+from src.ui.mean_test_ui import Ui_MeanTest
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import pyqtSignal
 from src.module.user_model import UserManager
@@ -11,7 +12,7 @@ class MeanTest(QMainWindow):
     
     def __init__(self, user=None):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_MeanTest()
         self.ui.setupUi(self)
         self.user = user
 
