@@ -7,8 +7,10 @@ from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QFont, QFontDatabase
 from src.ui.main_ui import Ui_Main
 from src.window.test_select import TestSelect
+from src.window.level_select import LevelSelect
 from src.window.game_select import GameSelect
 from src.window.basic_study import BasicStudy
+from src.window.voca_select_basic_study import VocaSelect
 from src.window.settings_window_theme import SettingThema
 from src.module.user_model import *
 
@@ -25,17 +27,24 @@ class Main(QMainWindow):
 
         self.set_attendance()
         self.set_word()
+        self.set_low_level_score()
         self.set_middle_level_score()
+        self.set_high_level_score()
         self.set_time_attack_score()
         self.set_perfect_streak_score()
         
     def show_test_window(self):
-        self.test_window = TestSelect(self.user)
-        self.test_window.testSignal.connect(self.update_test_score)
+        self.test_window = LevelSelect(self.user)
+        self.test_window.resultSignal.connect(self.update_test_score)
         self.test_window.show()
         
     def update_test_score(self, result):
-        self.ui.middleLevelScoreLabel.setText(result)
+        if result[0] == 'e':
+            self.ui.lowLevelScoreLabel.setText(result[1:])
+        elif result[0] == 'n':
+            self.ui.middleLevelScoreLabel.setText(result[1:])
+        elif result[0] == 'h':
+            self.ui.highLevelScoreLabel.setText(result[1:])
         
     def show_game_window(self):
         self.game_window = GameSelect(self.user)
@@ -50,7 +59,7 @@ class Main(QMainWindow):
         self.ui.perfectStreakkLabel.setText(result)
 
     def show_voca_window(self):
-        self.voca_window = BasicStudy()
+        self.voca_window = VocaSelect()
         self.voca_window.show()
     
     def show_setting_window(self):
@@ -67,9 +76,15 @@ class Main(QMainWindow):
         self.ui.wordLabel.setText(word[0])
         self.ui.meaningLabel.setText(word[1])
 
+    def set_low_level_score(self):
+        self.ui.lowLevelScoreLabel.setText(str(self.user['test score easy']))
+
     def set_middle_level_score(self):
-        self.ui.middleLevelScoreLabel.setText(str(self.user['test score']))
+        self.ui.middleLevelScoreLabel.setText(str(self.user['test score normal']))
         
+    def set_high_level_score(self):
+        self.ui.highLevelScoreLabel.setText(str(self.user['test score hard']))        
+
     def set_time_attack_score(self):
         self.ui.timeAttackLabel.setText(str(self.user['time attack score']))
         
@@ -83,6 +98,6 @@ if __name__ == '__main__':
     QFontDatabase.addApplicationFont(font_path)
     app.setFont(QFont("AppleSDGothicNeo"))
 
-    main_window = Main()
+    main_window = Main(UserManager().get('123'))
     main_window.show()
     sys.exit(app.exec())

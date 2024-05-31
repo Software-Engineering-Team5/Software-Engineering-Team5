@@ -46,7 +46,7 @@ class UserManager:
     def get(self, id):
         if self.does_exists(id):
             return {"id": id, "password": self.users[id]["password"], "last login": self.users[id]["last login"], 
-                    "attendance": self.users[id]["attendance"], "test score": self.users[id]["test score"], 
+                    "attendance": self.users[id]["attendance"], "test score easy": self.users[id]["test score easy"], "test score normal": self.users[id]["test score normal"], "test score hard": self.users[id]["test score hard"], 
                     "time attack score": self.users[id]["time attack score"], "perfect streak score": self.users[id]["perfect streak score"],
                     "is admin": self.users[id]["is admin"]}
         raise Exception('존재하지 않는 id 입니다. ')
@@ -70,10 +70,19 @@ class UserManager:
         else:
             self.users[id]["attendance"] = 1
             
-    def update_test_score(self, id, score):
-        self.users[id]["test score"] = score
-        self.save_users()
-        return True
+    def update_test_score(self, id, level, score):
+        if level == 'easy':
+            self.users[id]["test score easy"] = score
+            self.save_users()
+            return True
+        elif level == 'normal':
+            self.users[id]["test score normal"] = score
+            self.save_users()
+            return True
+        elif level == 'hard':
+            self.users[id]["test score hard"] = score
+            self.save_users()
+            return True
     
     def update_time_attack_score(self, id, score):
         self.users[id]["time attack score"] = score
@@ -91,7 +100,9 @@ class User:
         self.password = self.hash_password(password)
         self.last_login = "" if last_login is None else last_login
         self.attendance = 0
-        self.test_score = 0
+        self.test_score_easy = 0
+        self.test_score_normal = 0
+        self.test_score_hard = 0
         self.time_attack_score = 0
         self.perfect_streak_score = 0
         self.is_admin = False
@@ -105,15 +116,12 @@ class User:
         return self.password == hash
     
     def to_dict(self):
-        return {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score": self.test_score, 
+        return {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score easy": self.test_score_easy, "test score normal": self.test_score_normal, "test score hard": self.test_score_hard, 
                 "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score, "is admin": self.is_admin}
     
     def serializing(self):
-        return {self.id: {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score": self.test_score, 
+        return {self.id: {"password": self.password, "last login": self.last_login, "attendance": self.attendance, "test score easy": self.test_score_easy, "test score normal": self.test_score_normal, "test score hard": self.test_score_hard, 
                 "time attack score": self.time_attack_score, "perfect streak score": self.perfect_streak_score, "is admin": self.is_admin}}
-    
-    def __repr__(self):
-        return f"<User(id='{self.id}', password='{self.password}', last_login='{self.last_login}', attendance='{self.attendance}' ,test_score='{self.test_score}', time_attack_score='{self.time_attack_score}', perfect_streak_score='{self.perfect_streak_score}', is_admin='{self.is_admin}')>"
     
     manager = UserManager()
     

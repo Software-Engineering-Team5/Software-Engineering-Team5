@@ -11,10 +11,11 @@ from src.module.user_model import *
 class EngTest(QMainWindow):
     engTestResult = pyqtSignal(str)
     
-    def __init__(self, user):
+    def __init__(self, level, user):
         super().__init__()
         self.ui = Ui_EnglishTest()
         self.ui.setupUi(self)
+        self.level = level
         self.user = user
         # 단어 리스트 초기화
         self.words = []
@@ -43,15 +44,19 @@ class EngTest(QMainWindow):
         self.next_word()
 
     def load_word_file(self):
-        # 파일 선택 대화 상자를 열어서 JSON 파일을 선택합니다.
-        filename, _ = QFileDialog.getOpenFileName(self, "단어장 파일 선택", "", "JSON Files (*.json)")
-
-        if filename:
-            # 선택한 파일을 열어서 단어를 로드합니다.
-            with open(filename, "r", encoding="utf-8") as file:
+        if self.level == 'easy':
+            with open("data/amazing_talker/amazing_talker_easy_processed.json", "r", encoding="utf-8") as file:
                 data = json.load(file)
                 self.words = [{"word": word, "meaning": meaning} for word, meaning in data.items()]
-
+        elif self.level == 'normal':
+            with open("data/amazing_talker/amazing_talker_normal_processed.json", "r", encoding="utf-8") as file:
+                data = json.load(file)
+                self.words = [{"word": word, "meaning": meaning} for word, meaning in data.items()]
+        elif self.level == 'hard':
+            with open("data/amazing_talker/amazing_talker_hard_processed.json", "r", encoding="utf-8") as file:
+                data = json.load(file)
+                self.words = [{"word": word, "meaning": meaning} for word, meaning in data.items()]
+                
     def next_word(self):
         if self.words:
             if self.total_attempts < self.max_attempts:
@@ -119,10 +124,11 @@ class EngTest(QMainWindow):
             layout.addWidget(scroll)
 
             user_manager = UserManager()
-            if int(self.user['test score']) < self.correct_count:
-                user_manager.update_test_score(self.user['id'], self.correct_count)
+            
+            if int(self.user['test score' + ' '+ self.level]) < self.correct_count:
+                user_manager.update_test_score(self.user['id'], self.level, self.correct_count)
                 user_manager.save_users()
-                self.engTestResult.emit(str(self.correct_count))
+                self.engTestResult.emit(self.level[0] + str(self.correct_count))
             
             close_button = QPushButton("닫기")
             close_button.clicked.connect(dialog.close)
