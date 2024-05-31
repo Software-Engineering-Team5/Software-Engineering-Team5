@@ -14,6 +14,10 @@ from src.window.voca_select_basic_study import VocaSelect
 from src.window.settings_window_theme import SettingThema
 from src.module.user_model import *
 
+from global_settings import GlobalSettings # 테마 적용부분입니다
+from theme_manager import ThemeManager
+
+
 class Main(QMainWindow):
     def __init__(self, user=None, parent=None):
         super().__init__(parent)
@@ -32,6 +36,19 @@ class Main(QMainWindow):
         self.set_high_level_score()
         self.set_time_attack_score()
         self.set_perfect_streak_score()
+
+        self.initUI() # 테마적용부분입니다
+
+    def initUI(self):
+        self.load_last_theme()
+
+    def load_last_theme(self):
+        settings = GlobalSettings()
+        theme_file = settings.get_theme()
+        ThemeManager.apply_theme(QApplication.instance(), theme_file)
+
+    def load_theme(self, theme_file):
+        ThemeManager.apply_theme(QApplication.instance(), theme_file)
         
     def show_test_window(self):
         self.test_window = LevelSelect(self.user)

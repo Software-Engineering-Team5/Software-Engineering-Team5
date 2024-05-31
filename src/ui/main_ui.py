@@ -13,7 +13,7 @@ class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
         Main.resize(1000, 600)
-        Main.setStyleSheet("background-color: white;")
+        #Main.setStyleSheet("background-color: white;")
         self.centralwidget = QtWidgets.QWidget(parent=Main)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(parent=self.centralwidget)
