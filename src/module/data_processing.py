@@ -8,6 +8,12 @@ def remove_parentheses(text):
         return text
     return text[:start_index] + text[end_index + 1:]
 
+def remove_after_bracket(text):
+    index = text.find('[')
+    if index == -1:
+        return text
+    return text[:index]
+
 def remove_comma(text):
     index = text.find(',')
     if index == -1:
