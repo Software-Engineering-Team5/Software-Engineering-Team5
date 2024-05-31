@@ -9,11 +9,11 @@ import random
 
 #화면을 띄우는데 사용되는 Class 선언
 class BasicStudy(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, filepath, parent=None):
         super().__init__(parent)
         self.ui = Ui_BasicStudy()
         self.ui.setupUi(self)
-
+        self.path = filepath
         # 단어 리스트 초기화
         self.words = []
         self.i=0
@@ -37,15 +37,10 @@ class BasicStudy(QMainWindow):
         self.ui.pushButton_main.clicked.connect(self.button_main)
         
     def load_word_file(self):
-        # 파일 선택 대화 상자를 열어서 JSON 파일을 선택합니다.
-        filename, _ = QFileDialog.getOpenFileName(self, "단어장 파일 선택", "", "JSON Files (*.json)")
-
-        if filename:
-            # 선택한 파일을 열어서 단어를 로드합니다.
-            with open(filename, "r", encoding="utf-8") as file:
-                data = json.load(file)
-                self.words = [{"word": word, "meaning": meaning} for word, meaning in data.items()]
-
+        with open(self.path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            self.words = [{"word": word, "meaning": meaning} for word, meaning in data.items()]     
+        
     def button_before(self) :
         if self.i!=0:
             self.i=self.i-1
