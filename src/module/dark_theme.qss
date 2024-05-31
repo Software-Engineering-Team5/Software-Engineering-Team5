@@ -1,4 +1,6 @@
 /* dark_theme.qss */
+
+
 QMainWindow {
     background-color: #2e2e2e;
     color: #ffffff;
@@ -34,4 +36,8 @@ QLineEdit {
 
 QLabel {
     color: #ffffff;
+}
+
+QLabel#label_eng {
+    color: black;  # 특정 QLabel (label_eng) 제외
 }
