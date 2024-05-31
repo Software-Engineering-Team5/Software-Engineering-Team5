@@ -24,7 +24,6 @@ class Ui_BasicStudy(object):
         self.label_eng.setObjectName("label_eng")
         self.label_eng.setGeometry(QRect(320, 221, 251, 51))
         self.label_eng.setAlignment(Qt.AlignmentFlag.AlignCenter)  # 수정된 부분
-        self.label_eng.setStyleSheet("color: black;")  # 기본 색상으로 설정
         self.label_kor = QLabel(BasicStudy)
         self.label_kor.setObjectName("label_kor")
         self.label_kor.setGeometry(QRect(350, 230, 300, 100))
@@ -48,14 +47,5 @@ class Ui_BasicStudy(object):
         self.pushButton_before.setText(QCoreApplication.translate("BasicStudy", "이전", None))
         self.pushButton_after.setText(QCoreApplication.translate("BasicStudy", "다음", None))
         self.pushButton_main.setText(QCoreApplication.translate("BasicStudy", "홈으로", None))
-        self.label_eng.setText("")
+        self.label_eng.setText("English Text")  # 초기 텍스트 설정
         self.label_kor.setText("")
-
-if __name__ == "__main__":
-    import sys
-    app = QApplication(sys.argv)
-    BasicStudy = QWidget()
-    ui = Ui_BasicStudy()
-    ui.setupUi(BasicStudy)
-    BasicStudy.show()
-    sys.exit(app.exec())
