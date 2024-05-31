@@ -29,8 +29,11 @@ class BasicStudy(QMainWindow):
         else:
             QMessageBox.critical(self, "에러", "단어장 파일을 로드해주세요.")
 
+        print("Current word:", self.current_word['word'])  # 디버깅 출력 추가
         self.ui.pushButton_before.clicked.connect(self.button_before)
+        print("Current word:", self.current_word['word'])
         self.ui.pushButton_after.clicked.connect(self.button_after)
+        print("Current word:", self.current_word['word'])
         self.ui.pushButton_main.clicked.connect(self.button_main)
         
     def load_word_file(self):
@@ -61,4 +64,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     myWindow = BasicStudy("path_to_your_json_file.json")  # JSON 파일의 경로를 지정
     myWindow.show()
+
+    
+
     sys.exit(app.exec())
