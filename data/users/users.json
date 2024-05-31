@@ -16,5 +16,16 @@
         "time attack score": 0,
         "perfect streak score": 0,
         "is admin": false
+    },
+    "03": {
+        "password": "0ef332778b21dff8648db320fa9fe790a5ed7508f53318233311876985c733a3",
+        "last login": "2024-05-31 14:47:18",
+        "attendance": 1,
+        "test score easy": 0,
+        "test score normal": 0,
+        "test score hard": 0,
+        "time attack score": 0,
+        "perfect streak score": 0,
+        "is admin": false
     }
 }
