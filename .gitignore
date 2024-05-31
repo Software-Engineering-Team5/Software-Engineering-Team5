@@ -7,6 +7,16 @@ __pycache__
 data/hackers_test/hackers_test_processed.json
 data/hackers_test/hackers_test_raw.csv
 
+data/word_master/word_master_processed.json
+data/word_master/word_master_raw.csv
+
+data/amazing_talker/amazing_talker_processed.json
+data/amazing_talker/amazing_talker_easy_processed.json
+data/amazing_talker/amazing_talker_normal_processed.json
+data/amazing_talker/amazing_talker_hard_processed.json
+data/amazing_talker/amazing_talker_raw.csv
+
+
 .DS_Store
 ._.DS_Store
 **/.DS_Store
