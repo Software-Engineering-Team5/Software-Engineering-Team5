@@ -14,7 +14,7 @@ class Ui_EnglishTest(object):
         EnglishTest.setObjectName("EnglishTest")
         EnglishTest.setEnabled(True)
         EnglishTest.resize(1000, 600)
-        EnglishTest.setStyleSheet("background-color: white;")
+        # EnglishTest.setStyleSheet("background-color: white;")
         self.centralwidget = QtWidgets.QWidget(parent=EnglishTest)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
