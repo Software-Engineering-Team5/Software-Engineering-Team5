@@ -13,7 +13,7 @@ class Ui_MeanTest(object):
     def setupUi(self, MeanTest):
         MeanTest.setObjectName("MeanTest")
         MeanTest.resize(1000, 600)
-        MeanTest.setStyleSheet("background-color: white;")
+        # MeanTest.setStyleSheet("background-color: white;")
         self.centralwidget = QtWidgets.QWidget(parent=MeanTest)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
