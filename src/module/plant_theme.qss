@@ -35,3 +35,7 @@ QLineEdit {
 QLabel {
     color: #155724;
 }
+
+QLabel#label_eng {
+    color: black;  # 특정 QLabel (label_eng) 제외
+}
