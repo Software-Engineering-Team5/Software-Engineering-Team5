@@ -4,7 +4,8 @@ from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtCore import QSettings
 
 from src.ui.settings_window_theme import Ui_SettingThema  # 수정
-
+from global_settings import GlobalSettings
+from theme_manager import ThemeManager
 
 class SettingThema(QMainWindow):
     def __init__(self):
@@ -14,8 +15,8 @@ class SettingThema(QMainWindow):
         self.theme_settings_ui = Ui_SettingThema()
         self.theme_settings_ui.setupUi(self)
 
-        # QSettings 초기화
-        self.settings = QSettings("MyCompany", "MyApp")
+        # GlobalSettings 초기화
+        self.settings = GlobalSettings()
 
         # 메뉴 버튼 클릭 이벤트
         self.theme_settings_ui.menuButtonTheme.clicked.connect(self.showThemeSettingsPage)
@@ -44,19 +45,12 @@ class SettingThema(QMainWindow):
         else:
             theme_file = "src/module/light_theme.qss"  # Default theme
 
-        self.load_theme(theme_file)
-        self.settings.setValue("theme", theme_file)
+        self.settings.set_theme(theme_file)
+        ThemeManager.apply_theme(QApplication.instance(), theme_file)
 
     def load_last_theme(self):
-        theme_file = self.settings.value("theme", "/src/module/light_theme.qss")
-        self.load_theme(theme_file)
-
-    def load_theme(self, theme_file):
-        try:
-            with open(theme_file, "r") as file:
-                self.setStyleSheet(file.read())
-        except FileNotFoundError:
-            print(f"Theme file {theme_file} not found.")
+        theme_file = self.settings.get_theme()
+        ThemeManager.apply_theme(QApplication.instance(), theme_file)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -1,4 +1,9 @@
 /* dark_theme.qss */
+QMainWindow {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
 QWidget {
     background-color: #2e2e2e;
     color: #ffffff;
